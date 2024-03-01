@@ -1,32 +1,18 @@
 ﻿
 
+using System.Reflection.Metadata.Ecma335;
+
 namespace FlowControl
 {
     internal class UtilityFunctions
     {
 
-        internal void CheckAge()
+        internal void getAgePrice()
         {
             PrintOutput("Ange ålder:");
             if (int.TryParse(getInput(), out int age))
             {
-                int price;
-                if (age < 5 || age > 100)
-                {
-                    price = 0; // Gratis för barn under fem och pensionärer över 100
-                }
-                else if (age < 20)
-                {
-                    price = 80; // Ungdomspris: 80kr
-                }
-                else if (age > 64)
-                {
-                    price = 90; // Pensionärspris: 90kr
-                }
-                else
-                {
-                    price = 120; // Standardpris: 120kr
-                }
+                int price = CheckAge(age);
                 PrintOutput($"Pris: {price} kr" + "\n");
             }
             else
@@ -46,22 +32,7 @@ namespace FlowControl
                     PrintOutput($"Ålder på person {i + 1}:");
                     if (int.TryParse(getInput(), out int age))
                     {
-                        if (age < 5 || age > 100)
-                        {
-                            continue; // Gratis för barn under fem och pensionärer över 100
-                        }
-                        else if (age < 20)
-                        {
-                            totalPrice += 80; // Ungdomspris: 80kr
-                        }
-                        else if (age > 64)
-                        {
-                            totalPrice += 90; // Pensionärspris: 90kr
-                        }
-                        else
-                        {
-                            totalPrice += 120; // Standardpris: 120kr
-                        }
+                        totalPrice += CheckAge(age);
                     }
                     else
                     {
@@ -106,6 +77,29 @@ namespace FlowControl
             {
                 PrintOutput("För få ord angivna. Var god ange minst 3 ord." + "\n");
             }
+        }
+
+        private int CheckAge(int age)
+        {
+            int price;
+
+            if (age < 5 || age > 100)
+            {
+                price = 0; // Gratis för barn under fem och pensionärer över 100
+            }
+            else if (age < 20)
+            {
+                price = 80; // Ungdomspris: 80kr
+            }
+            else if (age > 64)
+            {
+                price = 90; // Pensionärspris: 90kr
+            }
+            else
+            {
+                price = 120; // Standardpris: 120kr
+            }
+            return price;
         }
 
         internal void PrintOutput(string input)

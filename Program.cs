@@ -24,7 +24,7 @@ namespace FlowControl
                 switch (input)
                 {
                     case "1":
-                        utilityFunctions.CheckAge();
+                        utilityFunctions.getAgePrice();
                         break;
                     case "2":
                         utilityFunctions.CalculateGroupPrice();
