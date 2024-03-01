@@ -42,6 +42,7 @@ namespace FlowControl
                         utilityFunctions.PrintOutput("Felaktig input. Var god försök igen." + "\n");
                         break;
                 }
+                Environment.Exit(0);
             }
         }
     }
