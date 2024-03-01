@@ -1,10 +1,11 @@
 ﻿
+
 namespace FlowControl
 {
     internal class UtilityFunctions
     {
 
-        public static void CheckAge()
+        internal void CheckAge()
         {
             PrintOutput("Ange ålder:");
             if (int.TryParse(getInput(), out int age))
@@ -34,7 +35,7 @@ namespace FlowControl
             }
         }
 
-        public static void CalculateGroupPrice()
+        internal void CalculateGroupPrice()
         {
             PrintOutput("Ange antal personer:");
             if (int.TryParse(getInput(), out int numPeople))
@@ -76,7 +77,7 @@ namespace FlowControl
             }
         }
 
-        public static void RepeatText()
+        internal void RepeatText()
         {
             PrintOutput("Ange en text som ska upprepas:");
             string text = getInput();
@@ -87,7 +88,7 @@ namespace FlowControl
             PrintOutput("\n");
         }
 
-        public static void ThirdWord()
+        internal void ThirdWord()
         {
             PrintOutput("Ange en mening med minst 3 ord:");
             string input = getInput();
@@ -107,15 +108,14 @@ namespace FlowControl
             }
         }
 
-        public static void PrintOutput(string input)
+        internal void PrintOutput(string input)
         {
             Console.WriteLine(input);
         }
 
-        public static string getInput()
+        internal string getInput()
         {
             return Console.ReadLine();
         }
-
     }
 }

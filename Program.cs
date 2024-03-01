@@ -6,11 +6,12 @@ namespace FlowControl
         public static void Main(string[] args)
         {
             bool running = true;
+            UtilityFunctions utilityFunctions = new UtilityFunctions();
 
             // Huvudmeny
             while (running)
             {
-                UtilityFunctions.PrintOutput("Välkommen till huvudmenyn!"
+                utilityFunctions.PrintOutput("Välkommen till huvudmenyn!"
                 + "\n" + "Välj en funktion genom att ange dess nummer:"
                 + "\n" + "1. Ungdom eller pensionär"
                 + "\n" + "2. Räkna ut pris för ett helt sällskap"
@@ -18,27 +19,27 @@ namespace FlowControl
                 + "\n" + "4. Det tredje ordet"
                 + "\n" + "0. Avsluta programmet");
 
-                string input = UtilityFunctions.getInput();
+                string input = utilityFunctions.getInput();
 
                 switch (input)
                 {
                     case "1":
-                        UtilityFunctions.CheckAge();
+                        utilityFunctions.CheckAge();
                         break;
                     case "2":
-                        UtilityFunctions.CalculateGroupPrice();
+                        utilityFunctions.CalculateGroupPrice();
                         break;
                     case "3":
-                        UtilityFunctions.RepeatText();
+                        utilityFunctions.RepeatText();
                         break;
                     case "4":
-                        UtilityFunctions.ThirdWord();
+                        utilityFunctions.ThirdWord();
                         break;
                     case "0":
                         running = false;
                         break;
                     default:
-                        UtilityFunctions.PrintOutput("Felaktig input. Var god försök igen." + "\n");
+                        utilityFunctions.PrintOutput("Felaktig input. Var god försök igen." + "\n");
                         break;
                 }
             }
