@@ -1,16 +1,21 @@
-﻿
+﻿using System;
+
 namespace FlowControl
 {
     internal class Program
     {
+        // Main method, the entry point of the program
         public static void Main(string[] args)
         {
-            bool running = true;
+            bool running = true; // Boolean variable to control the main loop
+
+            // Create an instance of the UtilityFunctions class
             UtilityFunctions utilityFunctions = new UtilityFunctions();
 
-            // Huvudmeny
+            // Main loop to keep the program running until the user decides to exit
             while (running)
             {
+                // Display the main menu to the user
                 utilityFunctions.PrintOutput("Välkommen till huvudmenyn!"
                 + "\n" + "Välj en funktion genom att ange dess nummer:"
                 + "\n" + "1. Ungdom eller pensionär"
@@ -19,8 +24,10 @@ namespace FlowControl
                 + "\n" + "4. Det tredje ordet"
                 + "\n" + "0. Avsluta programmet");
 
+                // Get user input
                 string input = utilityFunctions.getInput();
 
+                // Switch statement to handle user input and execute corresponding functions
                 switch (input)
                 {
                     case "1":
@@ -36,15 +43,14 @@ namespace FlowControl
                         utilityFunctions.ThirdWord();
                         break;
                     case "0":
-                        running = false;
+                        running = false; // Set running to false to exit the loop
                         break;
                     default:
                         utilityFunctions.PrintOutput("Felaktig input. Var god försök igen." + "\n");
                         break;
                 }
-                Environment.Exit(0);
+                Environment.Exit(0); // Exit the program after executing the chosen function
             }
         }
     }
 }
-

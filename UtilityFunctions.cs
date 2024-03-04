@@ -1,112 +1,112 @@
 ﻿
-
-using System.Reflection.Metadata.Ecma335;
-
 namespace FlowControl
 {
     internal class UtilityFunctions
     {
-
+        // Method to get the age price
         internal void getAgePrice()
         {
-            PrintOutput("Ange ålder:");
-            if (int.TryParse(getInput(), out int age))
+            PrintOutput("Ange ålder:"); // Prompt user to enter age
+            if (int.TryParse(getInput(), out int age)) // Try parsing user input to integer
             {
-                int price = CheckAge(age);
-                PrintOutput($"Pris: {price} kr" + "\n");
+                int price = CheckAge(age); // Get price based on age
+                PrintOutput($"Pris: {price} kr" + "\n"); // Print the price
             }
             else
             {
-                PrintOutput("Felaktig ålder. Var god ange ålder i siffror." + "\n");
+                PrintOutput("Felaktig ålder. Var god ange ålder i siffror." + "\n"); // Error message for invalid age input
             }
         }
 
+        // Method to calculate group price
         internal void CalculateGroupPrice()
         {
-            PrintOutput("Ange antal personer:");
-            if (int.TryParse(getInput(), out int numPeople))
+            PrintOutput("Ange antal personer:"); // Prompt user to enter number of people
+            if (int.TryParse(getInput(), out int numPeople)) // Try parsing user input to integer
             {
                 int totalPrice = 0;
                 for (int i = 0; i < numPeople; i++)
                 {
-                    PrintOutput($"Ålder på person {i + 1}:");
-                    if (int.TryParse(getInput(), out int age))
+                    PrintOutput($"Ålder på person {i + 1}:"); // Prompt user to enter age for each person
+                    if (int.TryParse(getInput(), out int age)) // Try parsing user input to integer
                     {
-                        totalPrice += CheckAge(age);
+                        totalPrice += CheckAge(age); // Add price based on age to total price
                     }
                     else
                     {
-                        PrintOutput($"Felaktig ålder för person {i + 1}. Ålder måste anges i siffror." + "\n");
-                        i--; // Återställ loopindex för att låta användaren ange åldern igen.
+                        PrintOutput($"Felaktig ålder för person {i + 1}. Ålder måste anges i siffror." + "\n"); // Error message for invalid age input
+                        i--; // Reset loop index to allow user to enter age again
                     }
                 }
-                PrintOutput($"Antal personer: {numPeople}\nTotalkostnad: {totalPrice} kr" + "\n");
+                PrintOutput($"Antal personer: {numPeople}\nTotalkostnad: {totalPrice} kr" + "\n"); // Print total number of people and total price
             }
             else
             {
-                PrintOutput("Felaktigt antal personer. Var god ange antal personer i siffror." + "\n");
+                PrintOutput("Felaktigt antal personer. Var god ange antal personer i siffror." + "\n"); // Error message for invalid number of people input
             }
         }
 
+        // Method to repeat text ten times
         internal void RepeatText()
         {
-            PrintOutput("Ange en text som ska upprepas:");
-            string text = getInput();
+            PrintOutput("Ange en text som ska upprepas:"); // Prompt user to enter text
+            string text = getInput(); // Get text input from user
             for (int i = 0; i < 10; i++)
             {
-                Console.Write($"{i + 1}. {text}, ");
+                Console.Write($"{i + 1}. {text}, "); // Print text ten times
             }
-            PrintOutput("\n");
+            PrintOutput("\n"); // Add newline after repeating text
         }
 
+        // Method to find the third word in a sentence
         internal void ThirdWord()
         {
-            PrintOutput("Ange en mening med minst 3 ord:");
-            string input = getInput();
+            PrintOutput("Ange en mening med minst 3 ord:"); // Prompt user to enter a sentence
+            string input = getInput(); // Get sentence input from user
 
-            // Hantera flera mellanslag i rad genom att dela på alla mellanslag
-            //string[] words = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            string[] words = input.Split(' ');
+            string[] words = input.Split(' '); // Split sentence into words
 
-
-            if (words.Length > 2)
+            if (words.Length > 2) // Check if there are at least 3 words in the sentence
             {
-                PrintOutput($"Det tredje ordet är: {words[2].Trim()}" + "\n");
+                PrintOutput($"Det tredje ordet är: {words[2].Trim()}" + "\n"); // Print the third word
             }
             else
             {
-                PrintOutput("För få ord angivna. Var god ange minst 3 ord." + "\n");
+                PrintOutput("För få ord angivna. Var god ange minst 3 ord." + "\n"); // Error message for insufficient words
             }
         }
 
+        // Method to check age and determine price
         private int CheckAge(int age)
         {
             int price;
 
             if (age < 5 || age > 100)
             {
-                price = 0; // Gratis för barn under fem och pensionärer över 100
+                price = 0; // Free for children under five and seniors over 100
             }
             else if (age < 20)
             {
-                price = 80; // Ungdomspris: 80kr
+                price = 80; // Youth price: 80 SEK
             }
             else if (age > 64)
             {
-                price = 90; // Pensionärspris: 90kr
+                price = 90; // Senior price: 90 SEK
             }
             else
             {
-                price = 120; // Standardpris: 120kr
+                price = 120; // Standard price: 120 SEK
             }
             return price;
         }
 
+        // Method to print output to console
         internal void PrintOutput(string input)
         {
             Console.WriteLine(input);
         }
 
+        // Method to get input from console
         internal string getInput()
         {
             return Console.ReadLine();
