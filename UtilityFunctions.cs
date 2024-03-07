@@ -4,10 +4,10 @@ namespace FlowControl
     internal class UtilityFunctions
     {
         // Method to get the age price
-        internal void getAgePrice()
+        internal static void GetAgePrice()
         {
             PrintOutput("Ange ålder:"); // Prompt user to enter age
-            if (int.TryParse(getInput(), out int age)) // Try parsing user input to integer
+            if (int.TryParse(GetInput(), out int age)) // Try parsing user input to integer
             {
                 int price = CheckAge(age); // Get price based on age
                 PrintOutput($"Pris: {price} kr" + "\n"); // Print the price
@@ -19,16 +19,16 @@ namespace FlowControl
         }
 
         // Method to calculate group price
-        internal void CalculateGroupPrice()
+        internal static void CalculateGroupPrice()
         {
             PrintOutput("Ange antal personer:"); // Prompt user to enter number of people
-            if (int.TryParse(getInput(), out int numPeople)) // Try parsing user input to integer
+            if (int.TryParse(GetInput(), out int numPeople)) // Try parsing user input to integer
             {
                 int totalPrice = 0;
                 for (int i = 0; i < numPeople; i++)
                 {
                     PrintOutput($"Ålder på person {i + 1}:"); // Prompt user to enter age for each person
-                    if (int.TryParse(getInput(), out int age)) // Try parsing user input to integer
+                    if (int.TryParse(GetInput(), out int age)) // Try parsing user input to integer
                     {
                         totalPrice += CheckAge(age); // Add price based on age to total price
                     }
@@ -47,10 +47,10 @@ namespace FlowControl
         }
 
         // Method to repeat text ten times
-        internal void RepeatText()
+        internal static void RepeatText()
         {
             PrintOutput("Ange en text som ska upprepas:"); // Prompt user to enter text
-            string text = getInput(); // Get text input from user
+            string text = GetInput(); // Get text input from user
             for (int i = 0; i < 10; i++)
             {
                 Console.Write($"{i + 1}. {text}, "); // Print text ten times
@@ -59,10 +59,10 @@ namespace FlowControl
         }
 
         // Method to find the third word in a sentence
-        internal void ThirdWord()
+        internal static void ThirdWord()
         {
             PrintOutput("Ange en mening med minst 3 ord:"); // Prompt user to enter a sentence
-            string input = getInput(); // Get sentence input from user
+            string input = GetInput(); // Get sentence input from user
 
             string[] words = input.Split(' '); // Split sentence into words
 
@@ -77,7 +77,7 @@ namespace FlowControl
         }
 
         // Method to check age and determine price
-        private int CheckAge(int age)
+        private static int CheckAge(int age)
         {
             int price;
 
@@ -101,13 +101,13 @@ namespace FlowControl
         }
 
         // Method to print output to console
-        internal void PrintOutput(string input)
+        internal static void PrintOutput(string input)
         {
             Console.WriteLine(input);
         }
 
         // Method to get input from console
-        internal string getInput()
+        internal static string GetInput()
         {
             return Console.ReadLine();
         }
